@@ -9,7 +9,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "npx jest --watchAll",
+    "test": "npx jest",
+    "test:dev": "npx jest --watchAll",
     "test:coverage": "npx jest --coverage --watchAll=false"
   },
   "dependencies": {
