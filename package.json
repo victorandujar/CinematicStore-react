@@ -14,7 +14,11 @@
     "test:coverage": "npx jest --coverage --watchAll=false"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fontsource/mulish": "^5.0.8",
+    "@mui/icons-material": "^5.14.6",
+    "@mui/material": "^5.14.6",
     "@testing-library/jest-dom": "^6.1.2",
     "@testing-library/react": "^14.0.0",
     "babel-jest": "^29.6.4",
@@ -28,6 +32,7 @@
     "@types/jest": "^29.5.4",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
