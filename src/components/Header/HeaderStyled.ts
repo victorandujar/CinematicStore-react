@@ -11,7 +11,9 @@ const HeaderStyled = styled.header`
   margin: 0;
   z-index: 2;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #8a2be2, #00ffff);
+  border-image-slice: 1;
   background-color: black;
 
   .header {
