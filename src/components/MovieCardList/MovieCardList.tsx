@@ -9,7 +9,7 @@ interface MovieCardListProps {
 const MovieCardList = ({ movies }: MovieCardListProps): React.ReactElement => {
   return (
     <MovieCardListStyled>
-      {movies.map((movie) => (
+      {movies?.map((movie) => (
         <li key={movie.id}>
           <MovieCard movie={movie} />
         </li>
