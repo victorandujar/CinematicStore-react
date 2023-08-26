@@ -1,18 +1,7 @@
-import { useQuery } from "react-query";
-import Header from "./components/Header/Header";
-import useMovies from "./hooks/useMovies/useMovies";
-import MovieCardList from "./components/MovieCardList/MovieCardList";
+import Layout from "./components/Layout/Layout";
 
 const App = () => {
-  const { getPopularMovies } = useMovies();
-  const movies = useQuery("rides", getPopularMovies);
-
-  return (
-    <>
-      <Header />
-      <MovieCardList movies={movies.data} />
-    </>
-  );
+  return <Layout />;
 };
 
 export default App;
