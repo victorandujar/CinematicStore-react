@@ -66,7 +66,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <CardContent
           className="card__rate"
           sx={{
-            backgroundColor: "#f6b30a",
+            background: "linear-gradient(to bottom right, #8a2be2, #00ffff)",
             width: 45,
             height: 45,
             display: "flex",
@@ -75,7 +75,12 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             borderRadius: 1,
           }}
         >
-          <Typography fontWeight={900} fontSize={18} paddingTop={1}>
+          <Typography
+            fontWeight={900}
+            fontSize={18}
+            paddingTop={1}
+            color={"#fff"}
+          >
             {movie.vote_average}
           </Typography>
         </CardContent>
