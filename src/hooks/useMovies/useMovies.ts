@@ -9,7 +9,12 @@ const useMovies = () => {
     return response.data?.results;
   };
 
-  return { getPopularMovies };
+  const getSingleMovie = async (movieId: number) => {
+    const response = await apiClient.get(`${movies}/${movieId}`);
+    return response.data;
+  };
+
+  return { getPopularMovies, getSingleMovie };
 };
 
 export default useMovies;
