@@ -8,6 +8,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MovieCardStyled from "./MovieCardStyled";
 import { MovieCardStructue } from "../../types/movie";
+import { Link } from "react-router-dom";
 
 interface MovieCardProps {
   movie: MovieCardStructue;
@@ -15,77 +16,79 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }} className="card">
-      <CardMedia
-        component="img"
-        height={200}
-        image={`${process.env.VITE_IMAGE_BASE_URL}${movie.poster_path}`}
-        alt={movie.title}
-        sx={{ height: 430, width: 320, objectFit: "cover" }}
-      />
-      <CardContent>
-        <Typography
-          variant="h2"
-          color="text.primary"
-          fontWeight={900}
-          fontSize={15}
-          height={40}
-        >
-          {movie.title}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          display={"flex"}
-          gap={0.5}
-        >
-          <MovieCardStyled className="card__released">
-            Released:
-          </MovieCardStyled>
-          {movie.release_date}
-        </Typography>
-      </CardContent>
-      <CardActions
-        disableSpacing
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          paddingRight: 3,
-          paddingLeft: 0,
-          paddingTop: 0,
-        }}
-      >
+    <Link to={`/movie-detail/${movie.id}`}>
+      <Card sx={{ maxWidth: 345 }} className="card">
+        <CardMedia
+          component="img"
+          height={200}
+          image={`${process.env.VITE_IMAGE_BASE_URL}${movie.poster_path}`}
+          alt={movie.title}
+          sx={{ height: 430, width: 320, objectFit: "cover" }}
+        />
         <CardContent>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-        </CardContent>
-        <CardContent
-          className="card__rate"
-          sx={{
-            background: "linear-gradient(to bottom right, #8a2be2, #00ffff)",
-            width: 45,
-            height: 45,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 1,
-          }}
-        >
           <Typography
+            variant="h2"
+            color="text.primary"
             fontWeight={900}
-            fontSize={18}
-            paddingTop={1}
-            color={"#fff"}
+            fontSize={15}
+            height={40}
           >
-            {movie.vote_average}
+            {movie.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            display={"flex"}
+            gap={0.5}
+          >
+            <MovieCardStyled className="card__released">
+              Released:
+            </MovieCardStyled>
+            {movie.release_date}
           </Typography>
         </CardContent>
-      </CardActions>
-    </Card>
+        <CardActions
+          disableSpacing
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingRight: 3,
+            paddingLeft: 0,
+            paddingTop: 0,
+          }}
+        >
+          <CardContent>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+          </CardContent>
+          <CardContent
+            className="card__rate"
+            sx={{
+              background: "linear-gradient(to bottom right, #8a2be2, #00ffff)",
+              width: 45,
+              height: 45,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 1,
+            }}
+          >
+            <Typography
+              fontWeight={900}
+              fontSize={18}
+              paddingTop={1}
+              color={"#fff"}
+            >
+              {movie.vote_average}
+            </Typography>
+          </CardContent>
+        </CardActions>
+      </Card>
+    </Link>
   );
 };
 
