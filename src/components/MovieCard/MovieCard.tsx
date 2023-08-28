@@ -17,13 +17,13 @@ interface MovieCardProps {
 const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <Link to={`/movie-detail/${movie.id}`}>
-      <Card sx={{ maxWidth: 345 }} className="card">
+      <Card sx={{ maxWidth: 345, width: 300 }} className="card">
         <CardMedia
           component="img"
           height={200}
           image={`${process.env.VITE_IMAGE_BASE_URL}${movie.poster_path}`}
           alt={movie.title}
-          sx={{ height: 430, width: 320, objectFit: "cover" }}
+          sx={{ height: 400, width: 320, objectFit: "fill" }}
         />
         <CardContent>
           <Typography
