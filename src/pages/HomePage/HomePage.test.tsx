@@ -11,12 +11,14 @@ jest.mock("../../hooks/useMovies/useMovies", () => ({
   })),
 }));
 
-describe("HomePage", () => {
-  it("renders movie cards when data is fetched successfully", async () => {
-    renderRouterWithProviders(<HomePage />);
+describe("Given a HomePage page", () => {
+  describe("When it is rendered", () => {
+    test("renders movie cards when data is fetched successfully", async () => {
+      renderRouterWithProviders(<HomePage />);
 
-    await waitFor(() => {
-      expect(screen.getByText(moviesMock[0].title)).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText(moviesMock[0].title)).toBeInTheDocument();
+      });
     });
   });
 });
