@@ -1,19 +1,19 @@
 import apiClient from "../../api/apiClient";
 import endpointsApi from "../../api/endpoints";
-import { moviesMock } from "../../mocks/movieMocks";
+import { mockMovieDetail, moviesMock } from "../../mocks/movieMocks";
 import useMovies from "./useMovies";
 
 jest.mock("../../api/apiClient");
 
 describe("Given a useMovies custom hook", () => {
-  describe("When it is called", () => {
-    const { movies, popular } = endpointsApi;
+  const { movies, popular } = endpointsApi;
 
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-    test("Then getPopularMovies should fetch movies data from the API", async () => {
+  describe("When getPopularMovies is called", () => {
+    test("Then it should fetch popular movies from the API", async () => {
       const mockResponse = {
         data: { results: moviesMock },
       };
@@ -24,6 +24,24 @@ describe("Given a useMovies custom hook", () => {
 
       expect(apiClient.get).toHaveBeenCalledWith(`${movies}${popular}`);
       expect(moviesData).toEqual(mockResponse.data.results);
+    });
+  });
+
+  describe("When getSingleMovies is called", () => {
+    test("Then it should fetch movie detail info from the API", async () => {
+      const mockResponse = {
+        data: mockMovieDetail,
+      };
+
+      apiClient.get = jest.fn().mockResolvedValueOnce(mockResponse);
+
+      const { getSingleMovie } = useMovies();
+      const moviesData = await getSingleMovie(mockMovieDetail.id);
+
+      expect(apiClient.get).toHaveBeenCalledWith(
+        `${movies}/${mockMovieDetail.id}`,
+      );
+      expect(moviesData).toEqual(mockResponse.data);
     });
   });
 });
